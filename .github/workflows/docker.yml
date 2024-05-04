@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          tags: ['my-custom-tag'] # ${{ steps.meta.outputs.tags }}
+          tags: ['my-custom-tag']
           labels: ${{ steps.meta.outputs.labels }}
           push: ${{ github.event_name != 'pull_request' }}
 
