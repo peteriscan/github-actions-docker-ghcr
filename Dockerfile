@@ -1,2 +1,2 @@
 FROM hashicorp/http-echo
-CMD ["-listen=:8080", "-text='hello from pr'"]
+CMD ["-listen=:8080", "-text='hello world as before'"]
