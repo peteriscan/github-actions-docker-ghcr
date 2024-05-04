@@ -44,13 +44,17 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=abracadabra
+            type=ref,event=tag
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,format=short
 
       - name: Build and push
         id: push
         uses: docker/build-push-action@v5
         with:
           context: .
+          push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          push: ${{ github.event_name != 'pull_request' }}
