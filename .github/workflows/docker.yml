@@ -43,11 +43,11 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=abracadabra
-            type=ref,event=tag
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha,format=short
+            type=raw,value=abracadabra,priority=1
+            type=ref,event=tag,priority=2
+            type=ref,event=pr,priority=3
+            type=ref,event=branch,priority=4
+            type=sha,format=short,priority=1000
 
       - name: Build and push
         id: push
